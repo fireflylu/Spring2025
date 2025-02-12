@@ -1,0 +1,127 @@
+Application Layer
+WWW, HTTP
+
+Web Service:
+    Architecture
+        Application process:
+            application layer transmits messages to transport layer through the socket
+            interface between the two layers
+            socket is an API or SAP 
+                program interface that application is built upon
+                can fix certain parameters in transport layer, or send protocol
+        can use RTP or RTCP for realtime, uses TCP for web browsing
+    Client Side 
+        web browser understands http protocol
+        browser uses plug-ins or uses helper application
+        plug-in: designed to improve functionality but is 3rd party 
+            adobe flash, RealAudio
+        application: separate application program that can be called from browser   
+            independent from browser
+    Server Side 
+        accept tcp connection, get requested files, return files, close connection 
+        need to use processing module thread
+        front end send and receive request
+            checks for available thread, sends request to thread
+        use a cache to speed up processes
+
+        (a) client -> front end -> processing node -> front end -> client
+            Normal procedure
+        (b) client -> front end -> processing node -> client
+            TCP handoff protocol
+                asks processing machine to send message to client using IP spoofing
+                tells machine to use front end IP instead of machine's own IP
+            thread returns message to client
+            undesirable because receives message from another machine
+    URL 
+        Uniform Resource Locators
+        how and where to find an object
+        
+        RFC 3986
+            URI (uniform resource identifier)
+            URN (uniform resource name)
+
+        URL and URN (subset) URI 
+
+        example:
+            http://abc.com/author/bill.html#post
+            URI: whole thing
+            URL: up to # (not including)
+            URN: after http://
+    HTTP 
+        HTTP Methods: two categories, request or response
+        Request: GET HEAD PUT POST DELETE TRACE CONNECT OPTIONS 
+        Response: 
+            1xx Information
+            2xx Succes
+            3xx Redirect
+            4xx Client error
+            5xx Server error
+        
+        cr = carriage return (\r), lf = new line (\n), sp = space ( )
+        ----------------------------------------------------------------
+        (1) method | sp | URL | URL | sp | Version | cr | lf
+        (2) header field name: | sp | value | cr | lf 
+        (2) (repeated)
+        (2) header field name: | sp | value | cr | lf 
+        (3) cr | lf
+        (4) entity body
+
+        1: status line; 2: header lines; 3: between header and entity, need another line; 4: entity body
+    HTTP Advanced
+        Original HTTP: only GET method for HTML 
+        HTTP/0.9 (1991) : headers and additional methods
+        HTTP/0.9 (1996) : performance improvement
+            *persistent connection now optional
+        HTTP/1.1 (1997/1999) : mostly used now
+            persistent connection default
+        HTTP/2 (RFC7540, May 2015)
+            improve performance of HTTP based on Google's SPDY (speedy protocol)
+            SPDY between HTTP and TCP 
+            requests initiated by clients — has some issues
+                cannot get files that could be retrieved since needs to be requested by client
+        
+        How to make HTTP better with TCP 
+        How to become stateful, where server and client remember each other
+
+        HTTP is connectionless 
+        persistent connection: 
+            connection refers to HTTP using TCP connection, and can use for longer period
+        
+        (1) Create socket 
+        (2) Create connection between HTTP and TCP
+        (3) Send message
+        (4) Receive message
+
+        if file has multiple objects, GET message needs to request every object 
+        (1) and (2) not related to HTTP, needed to prepare to send and receive messages
+
+        Non-persistent connection
+            HTTP/1.0 default
+            one object per TCP connection
+            network delay is ~2*RTT per object (round trip time), still need to account for opening and closing connections
+            improve using concurrent HTTP connections
+        Persistent connection 
+            multiple objects per connection 
+            cost ~RTT per object; cost to connect is negligible
+            improve by using concurrency and pipelining
+            concurrency: build a connection while sending a request
+            pipelining: send requests back to back
+
+        client-server states
+            HTTP is stateless: client server does not remember each other
+                request-reply transactions
+            many apps require cookies
+                cookie issued by server backend
+                client decide keep or discard cookie
+                client presents cookie thereafter
+                *cookie is not part of HTTP
+        
+            4 parts to cookies:
+                (1) cookie file on browser
+                (2) backend database on server Side
+                (3) response set-cookie:
+                (4) request: cookie: 
+
+                when receiving response, add cookie to cookie file
+                when accessing web again, send cookie with request
+                

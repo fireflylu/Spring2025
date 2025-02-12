@@ -1,0 +1,231 @@
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.uvic.ca
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.0 302 Moved Temporarily
+Location: https://www.uvic.ca/
+Server: BigIP
+Connection: Keep-Alive
+Content-Length: 0
+
+
+---Response End---
+
+---Redirecting---
+---New host and profile received---
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.uvic.ca
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 200 OK
+Date: Fri, 31 Jan 2025 20:33:05 GMT
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Set-Cookie: PHPSESSID=qjhrk75q8q092f4a791t76dni8; path=/; secure; HttpOnly; SameSite=Lax
+Set-Cookie: uvic_bar=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/; domain=.uvic.ca; secure; HttpOnly
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Feature-Policy: accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'
+Vary: User-Agent
+Content-Type: text/html; charset=UTF-8
+Set-Cookie: www_def=!hfhvWIolG4edJGV2WoCbqs3+3m8im77EeS6d1Zh/NzCCurlPxkNbZVkP4WgzArJTUlvrGQzS+iK0Egg=; path=/; Httponly; Secure
+Strict-Transport-Security: max-age=16070400
+Set-Cookie: TS018b3cbd=0183e075341aed06c2995dbce52bbcd27f6d7792d4c52144a4a93ac85ae86924c8061f6c39013869b047d56c17dc7b4d2d5d937dca; Path=/; Secure; HTTPOnly
+Set-Cookie: TS0165a077=0183e075341aed06c2995dbce52bbcd27f6d7792d4c52144a4a93ac85ae86924c8061f6c39013869b047d56c17dc7b4d2d5d937dca; path=/; domain=.uvic.ca; HTTPonly; Secure
+
+
+---Response End---
+
+website: www.uvic.ca
+1. Supports http2: no
+2. List of cookies:
+cookie name: PHPSESSID
+cookie name: uvic_bar, expires: Thu, 01-Jan-1970 00:00:01 GMT, domain: .uvic.ca
+cookie name: www_def
+cookie name: TS018b3cbd
+cookie name: TS0165a077, domain: .uvic.ca
+3. password-protected: no
+
+---------------------------------------------------------------
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.facebook.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 301 Moved Permanently
+Location: https://www.facebook.com/
+Content-Type: text/plain
+Server: proxygen-bolt
+Date: Fri, 31 Jan 2025 20:33:06 GMT
+Connection: keep-alive
+Content-Length: 0
+
+
+---Response End---
+
+---Redirecting---
+---New host and profile received---
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.facebook.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 302 Found
+Location: https://www.facebook.com/unsupportedbrowser
+Strict-Transport-Security: max-age=15552000; preload
+Content-Type: text/html; charset="utf-8"
+X-FB-Debug: eoRyuJtBleLnLyHiScWR229HlhehW27n0EHI9VYhQlvnVd/c7XbNK4RopKZhiGNDHrlmTdvsgBBnUnQ/ZXim3A==
+Date: Fri, 31 Jan 2025 20:33:06 GMT
+X-FB-Connection-Quality: EXCELLENT; q=0.9, rtt=6, rtx=0, c=10, mss=1300, tbw=3437, tp=-1, tpl=-1, uplat=54, ullat=0
+Alt-Svc: h3=":443"; ma=86400
+Connection: keep-alive
+Content-Length: 0
+
+
+---Response End---
+
+---Redirecting---
+---New host and profile received---
+
+---Request Begin---
+HEAD /unsupportedbrowser HTTP/1.1
+Host: www.facebook.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 200 OK
+Vary: Accept-Encoding
+reporting-endpoints: coop_report="https://www.facebook.com/browser_reporting/coop/?minimize=0", default="https://www.facebook.com/ajax/browser_error_reports/?device_level=unknown&brsid=7466180391006353160", permissions_policy="https://www.facebook.com/ajax/browser_error_reports/"
+report-to: {"max_age":2592000,"endpoints":[{"url":"https:\/\/www.facebook.com\/browser_reporting\/coop\/?minimize=0"}],"group":"coop_report","include_subdomains":true}, {"max_age":259200,"endpoints":[{"url":"https:\/\/www.facebook.com\/ajax\/browser_error_reports\/?device_level=unknown&brsid=7466180391006353160"}]}, {"max_age":21600,"endpoints":[{"url":"https:\/\/www.facebook.com\/ajax\/browser_error_reports\/"}],"group":"permissions_policy"}
+content-security-policy: default-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;script-src *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-f1BQOtEx' blob: data: 'self' connect.facebook.net 'unsafe-eval' https://*.google-analytics.com *.google.com;style-src *.fbcdn.net data: *.facebook.com 'unsafe-inline' https://fonts.googleapis.com;connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.whatsapp.com:* wss://*.fbcdn.net attachment.fbsbx.com ws://localhost:* blob: *.cdninstagram.com 'self' http://localhost:3103 wss://gateway.facebook.com wss://edge-chat.facebook.com wss://snaptu-d.facebook.com wss://kaios-d.facebook.com/ v.whatsapp.net *.fbsbx.c
+---Response End---
+
+website: www.facebook.com
+1. Supports http2: yes
+2. List of cookies:
+3. password-protected: no
+
+---------------------------------------------------------------
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.github.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 301 Moved Permanently
+Content-Length: 0
+Location: https://www.github.com/
+
+
+---Response End---
+
+---Redirecting---
+---New host and profile received---
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.github.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 301 Moved Permanently
+Content-Length: 0
+Location: https://github.com/
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+
+---Response End---
+
+---Redirecting---
+---New host and profile received---
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: github.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Fri, 31 Jan 2025 20:32:58 GMT
+Content-Type: text/html; charset=utf-8
+Vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, Accept-Language, Accept-Encoding, Accept, X-Requested-With
+content-language: en-US
+ETag: W/"6fbe08e4d76d7199c5eced3e896f9a2f"
+Cache-Control: max-age=0, private, must-revalidate
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+Content-Security-Policy: default-src 'none'; base-uri 'self'; child-src github.com/assets-cdn/worker/ github.com/webpack/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss:/
+---Response End---
+
+website: github.com
+1. Supports http2: yes
+2. List of cookies:
+3. password-protected: no
+
+---------------------------------------------------------------
+
+---Request Begin---
+HEAD /basic-auth/user/passwd HTTP/1.1
+Host: httpbin.org
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 401 UNAUTHORIZED
+Date: Fri, 31 Jan 2025 20:33:08 GMT
+Content-Length: 0
+Connection: keep-alive
+Server: gunicorn/19.9.0
+WWW-Authenticate: Basic realm="Fake Realm"
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+
+
+---Response End---
+
+website: httpbin.org
+1. Supports http2: yes
+2. List of cookies:
+3. password-protected: yes

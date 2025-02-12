@@ -1,0 +1,101 @@
+internet: 
+    network of networks
+    interconnected ISPs
+
+    protocols everywhere
+        sending/receiving messages
+
+    standards:
+        RFC: Request for Comments
+        IETF: Internet Engineering Task Force
+
+Protocols:
+    agreement between communicating peers on how to communicate
+    peers: on the same layer level 
+    communicates with other peers
+        using protocol primitives such as GET, POST, HEAD
+
+Service Primitives:
+    service is formally specified by set of primitives (basic operations) available to users/entity 
+    LISTEN, CONNECT, RECEIVE, SEND, DISCONNECT, GET, POST, etc.
+
+    (if k+1 = application layer, k = TCP layer, k-1 = network layer)
+    layer k+1 gets service provided by layer k, connects to a SAP (service access point)
+    socket calls TCP service using primitives: SYN: server handshake, DATA: data, ACK: acknowledge, FIN: finish
+    layer k supported by / uses layer k-1
+    
+5 Layers of Protocols
+    different layers handle different procedures/tasks
+    communication only occurs between the layers, doesnt skip around
+    layer 1 communicates with physical medium at bottom 
+    independence between layers
+        services from lower levels provided to higher levels
+        no need to specify how its implemented
+    networks can have different functions/layers/content
+
+    3 elements
+        service: set of functions and tasks provided to a higher layer
+        protocol: set rule used by layer to exhchange and transmit data
+        interface: channel that allows for message transmission between layers
+
+    every layer below the current one can be considered a "black box"
+    when sending to layer below, each layer adds its own header
+        based on immediate header, moves location
+
+    Layer 5: 
+        application layer
+        communicates with peers called "HTTP" 
+            using protocol primitives such as GET, POST, HEAD
+        unit: message
+    
+    Layer 4:
+        TCP process
+        communicates with peers called TCP
+        unit: segment
+
+    Layer 3:
+        IP, internet protocols
+        where is the destination, how to reach the destination
+        local tcp -> local computer -> local router -> another router -> ... -> server -> server tcp
+        unit: datagram
+
+    Layer 2:
+        data link layer
+        MAC — Mandatory Access Control
+        Ethernet protocol
+        only one device can talk to wifi at a given time
+        who has right to transmit
+        white area network
+        unit: frame
+
+    Layer 1: 
+        physical layer
+
+    Physical Medium
+
+Connection Oriented vs Connectionless Services
+    connection oriented: explictly set up connection, when done, explictly close connection 
+        TCP connection
+        remote login
+    Connectionless: UDP connection, does not need to make a connection
+
+Reliable Service vs Unreliable Service:
+    reliable: sender will guarantee that receiver will get package
+        ACK will be received
+    unreliable: send message without guarantee for receiving package
+
+OSI model (open system interconnection)
+    also known as 7 layer model
+    7 application, 6 presentation, 5 session, 4 transport, 3 network, 2 data link, 1 physical
+
+TCP/IP model
+    7 application, 4 transport, 3 internet, 2 1 host-to-network
+    presentation/session not present here; dependent on application
+
+Internet Architecture
+    Tier 1 ISP: Largest coverage range; internet backbones
+        AT&T, Sprint, etc
+    Regional ISP
+    Access ISP: last-mile ISP; direct access to users
+
+=====================

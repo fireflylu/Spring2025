@@ -1,0 +1,31 @@
+#! /usr/bin/bash
+
+# rm *_output.txt
+
+if [[ $1 == 'all' ]]
+then
+python SmartClient.py www.uvic.ca > output.txt
+echo -e "\n---------------------------------------------------------------\n" >> output.txt
+python SmartClient.py www.facebook.com >> output.txt
+echo -e "\n---------------------------------------------------------------\n" >> output.txt
+python SmartClient.py www.github.com >> output.txt
+echo -e "\n---------------------------------------------------------------\n" >> output.txt
+python SmartClient.py httpbin.org/basic-auth/user/passwd >> output.txt
+elif [[ $1 == "f" ]]; then
+python SmartClient.py www.facebook.com > fb_output.txt
+elif [[ $1 == "u" ]]; then
+python SmartClient.py www.uvic.ca > uvic_output.txt
+elif [[ $1 == "gh" ]]; then
+python SmartClient.py www.github.com > gh_output.txt
+elif [[ $1 == "p" ]]; then
+python SmartClient.py httpbin.org/basic-auth/user/passwd > pw_output.txt
+else
+python SmartClient.py www.facebook.com > fb_output.txt
+python SmartClient.py www.uvic.ca > uvic_output.txt
+python SmartClient.py www.github.com > gh_output.txt
+python SmartClient.py httpbin.org/basic-auth/user/passwd > pw_output.txt
+fi
+
+
+# read -p "clear? " clr_scrn
+# clear

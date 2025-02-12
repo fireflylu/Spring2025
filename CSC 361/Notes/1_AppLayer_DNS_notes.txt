@@ -1,0 +1,109 @@
+Application Layer
+DNS
+
+DNS: Domain Name System
+    people: identifiers such as SSN, name, passport, etc
+    internet hosts: IP address, "www.yahoo.com" used by people
+        similar to dict, need to map between IP address and host name
+        distributed database: hierarchy of name servers
+    
+    Services:
+        (1) translate hostname to IP address
+        (2) host aliasing
+        (3) mail server aliasing
+        (4) load distribution
+
+    Why not centralize?
+        single point of failure
+        traffic
+        distant centralized database
+        maintenance
+
+    (1):
+        www.google.com gets passed to DNS client
+        sends query to DNS server (may send more to other servers)
+        returns response with IP address
+        client can build tcp connection with server
+        iterative or recursive query
+
+    (2):
+        primary or canonical name and alias name
+        primary name not always easy to remember
+        alias name can be shorter or easier to remember
+        1 canonical name can have multiple alias names
+        mail and host server can have same alias name
+
+    (3):
+        primary/canonical name and 
+        bob@yahoo.local.mail -> yahoo.local.mail is primary name
+        yahoo.com could be the alias name
+        1 canonical name can have multiple alias names
+        mail and host server can have same alias name
+
+    (4):
+        replicated web servers: many IP address to one name
+        one host multiple IP addresses
+
+    DNS distributed hierarchical database
+        root -> TLD (top level domain server) -> (authoritative DNS)
+        TLD: com, org, edu, etc
+        authoritative: yahoo.com, amazon.com, pbs.org, poly.edu, umass.edu, etc
+        local DNS server
+
+        root DNS servers
+            managed by 13 DNS organizations
+            used to be 13 root servers instances, one per IP address
+
+        TLD servers
+            responsible for com, org, edu, etc
+            also top level country domains e.g. uk, fr, ca, jp
+            Network Solutions: maintains .com TLD
+            Educause: maintains .edu TLD
+
+        Authoritative servers
+            organization's DNS server, maintained by org or service provider
+
+        Local DNS server    
+            not strictly in hierarchy
+            has local cache for translations but may be out of date
+            host make DNS query -> to local DNS server
+            acts as proxy to send query to hierarchy
+
+    DNS name resolution example
+        host at cis.poly.edu wants IP for gaia.cs.umass.edu
+        iterative:
+            host -> local DNS -> root -> local -> TLD -> local -> authoritative -> local -> host
+            replies with IP of who to ask
+        recursive: 
+            host -> local DNS -> root -> TLD -> authoritative -> TLD -> root -> local -> host
+        
+    DNS caching
+        cache to speed up process
+        has time to live (ttl) value to timeout after some time
+        TLD servers often cached in local name servers 
+        entries may be out of date
+
+    DNS records
+        distributed db storing resource records (RR)
+        format = (name, value, type, ttl)
+            type=A; name is hostname; value is IP address
+            type=NS; name is domain; value is hostname of authoritative name 
+            type=CNAME; name is alias; value is canonical name
+            type=MX; value is name of mailserver associated with name
+
+    DNS protocol, messages
+        msg header
+            identification | flags
+            # questions | # answer RRs
+            # authority RRs | # additional RRs
+            questions
+            answers
+            authority
+            additional info
+        query and response has the same identification number
+
+    Insert record to DNS
+        e.g. "Network Utopia"
+        register name to DNS registrar
+            name, IP address, authoritative name server (primary and secondary)
+        insert 2 RR into .com TLD, one for site one for mail

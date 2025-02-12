@@ -1,0 +1,172 @@
+Transport Layer
+
+Actions:
+    Sender:
+        is passed an applayer message
+        determines segment header field values
+        create segment
+        pass segment to IP
+
+    Receiver:
+        receives segment from IP
+        check header values
+        get applayer message
+        demultiplexes message up to application via socket
+
+Services:
+    provide logical communication between application processes 
+    sender: breaks application messages into segments to pass to network layer
+    receiver: reassemble into message, pass to application layer
+
+    TCP and UDP transport protocols
+
+Network Layer Services:
+    move packets between end-hosts: logical communication
+    possible through many intermediate routers
+    e.g. — internet network-layer services  
+        IP: store and forward packet switching
+        packets can get lost at communication link, router, or receiver buffer
+            duplicated, corrupted, reordered are also possible
+
+Protocols:
+    mechanisms: 
+        addressing and multiplexing
+            identifying endpoint in end_host
+        connection management
+            connection-oriented transport services
+        flow control: avoid overwhelming receiver
+        error control: reliable transport services
+        congestion control: avoid overloading network
+
+    TCP: Transmission Control Protocol 
+        reliable, in-order
+        congestion control
+        flow control
+        connection setup
+
+    UDP: User Datagram Protocol 
+        unreliable, unordered
+        no-frills extension of "best-effort" IP
+
+    Not Available:
+        delay guarantees
+        bandwidth guarantees
+
+Multiplexing and Demultiplexing:
+    multiplexing as sender: 
+        handle data from sockets, add transport header (used to demultiplex)
+    demultiplexing as receiver:
+        use header to deliver received segments to correct socket
+    
+    Demultiplexing:
+        host receives IP datagrams
+            has source IP address, destination IP address
+            carries one transport layer segment
+            each segment has source, destination port number
+        use IP address and port number to direct segment to correct socket
+
+Connectionless: UDP
+Demultiplexing:
+    when creating socket, specify local port#
+    creating datagram to send UDP socket, specify dest IP address and port#
+    receiving UDP segment:
+        check destination port in segment, directs UDP segment to socket
+    IP/UDP datagrams with same dest. port # but different source IP/port will arrive at same socket
+
+Transport:
+    "no frills" "bare bones" internet transport protocol
+    segments may be lost or out of order
+    no handshaking between UDP sender+receiver
+    segments handled independently
+    WHY? 
+        no connection, no additonal RTT delay
+        simple, no connection state
+        small header size
+        no congestion control
+        can handle heavy load 
+    Usage:
+        streaming multimedia apps (loss tolerant and rate senstiive)
+        DNS
+        SNMP 
+        HTTP/3
+    For reliability:
+        add reliability and congestion control at application layer
+    Segment Format:
+        source port # | dest port # 
+        length (length in bytes of UDP segment, including header) | checksum
+        application data (payload)
+    Actions: 
+        sender: 
+            is passed applayer msg
+            determines UDP segment values
+            creates UDP segment
+            send to IP
+        receiver:
+            get segment from IP
+            check checksum header value
+            get applayer msg
+            demultiplex to app via socket
+    internet checksum:
+        seeks to detect errors in transmitted segment
+            sender: treat content as 16 bit int
+                checksum: one's complement addition of segment content
+                put into UDP checksum field
+            receiver:
+                compute checksum
+                check if value matches received value
+                error if not equal, maybe error free if equal
+
+Connection-oriented: TCP 
+Demultiplexing:
+    identified with 4-tuple
+        source IP address, source port num, dest IP address, dest port num
+    demux: receiver uses all four to direct segment to socket
+    may support many sockets simultaneously
+        socket has unique identifier
+        associated with different client
+
+Transport:
+    overview:
+        point to point: one sender one receiver
+        reliable: no boundaries
+        full duplex data: bi data flow in same connection 
+            MSS: max segment size
+        cumulative ACKs
+        pipelining: TCP congestion and flow control set window size
+        connection-oriented: handshaking inti sender, receiver state before data
+        flow control: receiver will not be overwhelmed
+    segment structure: 
+        source port | dest port
+        sequence number (counting bytes of data into bytestream)
+        acknowledgement number
+        headlen | N/A | C | E | U | A | P | R | S | F | receive window (flow control)
+        checksum | urg data pointer
+        options (variable length)
+        app data (variable length) (payload)
+    C, E = congestion notification
+    A = acknowledgement
+    R, S, F = RST, SYN, FIN: connection management
+
+    Go-Back-N: sender
+        "window" of up to N, consective transmitted but not ACK packet (pkt)
+        cumulative ACKs
+            ACK(n): ACKs all packets up tot including seq#
+            receiving ACK(n): move window to n+1 start
+            timer for oldest pkt
+            timeout(n): retransmit n and all higher seq
+    Go-Back-N: receiver
+        send ACK for correctly received packet in order
+        only need to remember rcv_base (most recently received?)
+        when receiving out of order:
+            discord or buffer, re-ACK highest seq pkt
+        
+    selective repeat:
+        pipelining: mult pkts at once
+        receiver: ACK every pkt
+            buffer packets as necessary for in order delivery
+        sender: 
+            maintains timer for pkt with no ACK
+                timeout: retransmit when timer ends
+            maintains window over n consecutive seq
+                limit pipline, send pkts within this window
+        if sequence #s smaller than window size, can cause errors

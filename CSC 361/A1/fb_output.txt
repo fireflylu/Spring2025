@@ -1,0 +1,79 @@
+www.facebook.com /
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.facebook.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 301 Moved Permanently
+Location: https://www.facebook.com/
+Content-Type: text/plain
+Server: proxygen-bolt
+Date: Thu, 30 Jan 2025 18:24:23 GMT
+Connection: keep-alive
+Content-Length: 0
+
+
+---Response End---
+
+
+---Redirecting---
+www.facebook.com /
+---New host and profile received---
+www.facebook.com / https
+hi?
+
+---Request Begin---
+HEAD / HTTP/1.1
+Host: www.facebook.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 302 Found
+Location: https://www.facebook.com/unsupportedbrowser
+Strict-Transport-Security: max-age=15552000; preload
+Content-Type: text/html; charset="utf-8"
+X-FB-Debug: MqEjF7RrwlvlNYPUqEM1gCUtpyH8oN80vi64f29bb0aCyiVWdt9en8tEHs5LJxySllr66QS/EM9A935NTd92vw==
+Date: Thu, 30 Jan 2025 18:24:23 GMT
+X-FB-Connection-Quality: EXCELLENT; q=0.9, rtt=7, rtx=0, c=10, mss=1300, tbw=3437, tp=-1, tpl=-1, uplat=75, ullat=0
+Alt-Svc: h3=":443"; ma=86400
+Connection: keep-alive
+Content-Length: 0
+
+
+---Response End---
+
+
+---Redirecting---
+www.facebook.com /unsupportedbrowser
+---New host and profile received---
+www.facebook.com /unsupportedbrowser https
+hi?
+
+---Request Begin---
+HEAD /unsupportedbrowser HTTP/1.1
+Host: www.facebook.com
+Connection: keep-alive
+
+---Request End---
+HTTP request sent, awaiting response...
+
+---Response Header---
+HTTP/1.1 200 OK
+Vary: Accept-Encoding
+reporting-endpoints: coop_report="https://www.facebook.com/browser_reporting/coop/?minimize=0", coep_report="https://www.facebook.com/browser_reporting/coep/?minimize=0", default="https://www.facebook.com/ajax/browser_error_reports/?device_level=unknown&brsid=7465776136942709707", permissions_policy="https://www.facebook.com/ajax/browser_error_reports/"
+report-to: {"max_age":2592000,"endpoints":[{"url":"https:\/\/www.facebook.com\/browser_reporting\/coop\/?minimize=0"}],"group":"coop_report","include_subdomains":true}, {"max_age":86400,"endpoints":[{"url":"https:\/\/www.facebook.com\/browser_reporting\/coep\/?minimize=0"}],"group":"coep_report"}, {"max_age":259200,"endpoints":[{"url":"https:\/\/www.facebook.com\/ajax\/browser_error_reports\/?device_level=unknown&brsid=7465776136942709707"}]}, {"max_age":21600,"endpoints":[{"url":"https:\/\/www.facebook.com\/ajax\/browser_error_reports\/"}],"group":"permissions_policy"}
+content-security-policy: default-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;script-src *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-ycwZK5C1' blob: data: 'self' connect.facebook.net 'unsafe-eval' https://*.google-analytics.com *.google.com;style-src *.fbcdn.net data: *.facebook.com 'unsafe-inline' https://fonts.googleapis.com;connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.whatsapp.com:* wss://*.fbcdn.net attachment.fbsbx.com ws
+---Response End---
+
+
+website: www.facebook.com
+1. Supports http2: yes
+2. List of cookies:
+3. password-protected: no

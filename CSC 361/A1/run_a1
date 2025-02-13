@@ -27,5 +27,6 @@ python SmartClient.py httpbin.org/basic-auth/user/passwd > pw_output.txt
 fi
 
 
-# read -p "clear? " clr_scrn
-# clear
+read -p "files checked? " file_rm
+rm *output.txt
+clear
